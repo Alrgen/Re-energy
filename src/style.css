@@ -54,6 +54,7 @@ a{
 }
 .button{
     cursor: pointer;
+    user-select: none;
 }
 .button:hover{
     filter: brightness(0.8);
@@ -128,4 +129,31 @@ a{
     font-size: 30px;
     font-weight: bold;
     margin: 20px;
+}
+
+/*----------ITEM COUNT-------------*/
+.itemCount{
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 10%;
+    font-size: 20px;
+    padding: 0px 5px 0px 5px;
+}
+.itemCount .button{
+    font-size: 30px;
+    width: 10%;
+}
+.itemCount-valueDisplay{
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    margin: 0px 5px 0px 5px;
 }

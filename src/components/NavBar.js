@@ -1,5 +1,5 @@
-import '../style.css';
-import logo from '../images/logo.png'
+import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png'
 
 import CartWidget from './CartWidget.js';
 
@@ -12,10 +12,10 @@ const NavBar = () => {
             </div>
 
             <ul className="menu">
-                <li className='button'><a href="#">Inicio</a></li>
-                <li className='button'><a href="#">Productos</a></li>
-                <li className='button'><a href="#">Contacto</a></li>
-                <li className='button'><a href="#">Info</a></li>
+                <li className='button'><Link to="/">Inicio</Link></li>
+                <li className='button'><Link to="/products/all">Productos</Link></li>
+                <li className='button'><Link to="/">Contacto</Link></li>
+                <li className='button'><Link to="/">Info</Link></li>
             </ul>
 
             <CartWidget/>

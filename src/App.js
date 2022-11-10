@@ -1,14 +1,7 @@
-import NavBar from './components/NavBar';
-import ItemListContainer from './components/ItemListContainer';
+import './style.css';
+import Router from './app/Router'
 
 
-const App = () => {
-  return (
-    <div>
-      <NavBar/>
-      <ItemListContainer/>
-    </div>
-  );
-}
+const App = () => <Router></Router>
 
 export default App;
