@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const ItemCount = (props) => {
 
     const [ammount, setAmmount] = useState(0);
     const stock = props.greeting;
+
+    useEffect(() => {
+      return (() => {
+        props.getAmmount(ammount)
+      })
+    }, [ammount])
 
     function OnAdd(){
         (ammount + 1 <= stock) ? setAmmount(ammount + 1) : alert("Limite de stock"); 

@@ -3,6 +3,7 @@ import Init from '../pages/Init';
 import ItemListContainer from '../pages/ItemListContainer';
 import ItemDetailContainer from '../pages/ItemDetailContainer'
 import Layout from './Layout';
+import CartContainer from '../pages/CartContainer';
 
 
 const Router = () => {
@@ -13,6 +14,8 @@ const Router = () => {
           <Route index element={<Init/>}/>
           <Route path='/products/:categoryId' element={<ItemListContainer/>}/>
           <Route path='/item/:itemId' element={<ItemDetailContainer/>}/>
+          <Route path='/cart' element={<CartContainer/>}/>
+
         </Route>
       </Routes>
     </BrowserRouter>

@@ -6,8 +6,31 @@ import ItemCount from './ItemCount';
 
 const ItemDetail = (props) => {
 
-  const data = props.greeting;
+  const [addToCart, setAddToCart] = useState(false);
+  const [ammount, setAmmount] = useState(0);
 
+  const data = props.greeting;
+  
+  const getAmmount = (value) => {
+    setAmmount(value);
+  }
+ 
+  const showCounter = () => {
+    return (
+      <div>
+        <ItemCount greeting={data.stock} getAmmount={getAmmount}></ItemCount>
+        <button onClick={() => {setAddToCart(true)}}>Añadir al Carrito</button>
+      </div>
+    )
+  }
+
+  const showConfirmButton = () => {
+    return (
+      <div>  
+        <Link to={'/cart'}><button>Ir al carrito</button></Link>
+      </div>
+    )
+  }
 
   //<img src={require(`../assets/${data.image}`)} alt="" />
   return (
@@ -20,8 +43,9 @@ const ItemDetail = (props) => {
                 <h1 className='item-tittle'>Precio: {data.price} USD</h1>       
             </div>
         </div>
-        <ItemCount greeting={data.stock}></ItemCount>
-        <button>Añadir al Carrito</button>
+        {addToCart ? showConfirmButton() : showCounter()}
+
+        
     </div>
     </div>
   )
