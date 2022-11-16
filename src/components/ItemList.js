@@ -6,7 +6,6 @@ const ItemList = (props) => {
   
   const products = props.greeting;
 
-
   return (
     <div>
       {

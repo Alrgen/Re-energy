@@ -32,12 +32,11 @@ const ItemDetail = (props) => {
     )
   }
 
-  //<img src={require(`../assets/${data.image}`)} alt="" />
   return (
     <div>
       <div className='item'>
         <div className='item-body'>
-        
+        <img src={data.image} alt="" />
             <div className='item-description'>
                 <h1 className='item-tittle'>{data.name}</h1>
                 <h1 className='item-tittle'>Precio: {data.price} USD</h1>       

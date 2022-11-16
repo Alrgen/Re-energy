@@ -7,7 +7,7 @@ const Item = (props) => {
   return (
     <div className='item'>
         <div className='item-body'>
-            <img src={require(`../assets/${data.image}`)} alt="" />
+            <img src={data.image} alt="" />
             <div className='item-description'>
                 <h1 className='item-tittle'>{data.name}</h1>
             </div>

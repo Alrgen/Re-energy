@@ -1,4 +1,3 @@
-import cart from '../assets/shopping-cart.png'
 
 const CartWidget = () => {
 
@@ -6,7 +5,7 @@ const CartWidget = () => {
 
     return (
         <div className='cart-widget button'>
-            <img src={cart} alt="cart" className='cart'/>
+            <img src="../assets/shopping-cart.png" alt="cart" className='cart'/>
 
             <span className="cart-number">{inCartItems}</span>
         </div>

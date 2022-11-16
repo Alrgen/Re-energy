@@ -24,7 +24,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div>
-      <button><Link to="/products/all">Volver</Link></button>
+      <button><Link to={`/products/${product.category}`}>Volver</Link></button>
       <ItemDetail greeting={product}/>
     </div>
   )
