@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react'
 
 const ItemCount = (props) => {
 
-    const [ammount, setAmmount] = useState(0);
-    const stock = props.greeting;
+  const [ammount, setAmmount] = useState(0);
+  const stock = props.greeting;
 
     useEffect(() => {
-      return (() => {
-        props.getAmmount(ammount)
-      })
+      props.getAmmount(ammount)
     }, [ammount])
 
     function OnAdd(){
@@ -20,9 +18,9 @@ const ItemCount = (props) => {
 
   return (
     <div className='itemCount'>
-        <div className='button' onClick={OnRemove}> - </div>
+        <div className='button' onClick={() => OnRemove()}> - </div>
         <div className='itemCount-valueDisplay'> <span>{ammount}</span> </div>
-        <div className='button' onClick={OnAdd}> + </div>
+        <div className='button' onClick={() => OnAdd()}> + </div>
     </div>
   )
 }

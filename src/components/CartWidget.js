@@ -1,14 +1,17 @@
+import { Link } from "react-router-dom";
 
 const CartWidget = () => {
 
     let inCartItems = 0;
 
     return (
-        <div className='cart-widget button'>
-            <img src="../assets/shopping-cart.png" alt="cart" className='cart'/>
+        <Link to={'/cart'}>
+            <div className='cart-widget button'>
+                <img src="../assets/shopping-cart.png" alt="cart" className='cart'/>
 
-            <span className="cart-number">{inCartItems}</span>
-        </div>
+                <span className="cart-number">{inCartItems}</span>
+            </div>    
+        </Link>
     )
 }
 
