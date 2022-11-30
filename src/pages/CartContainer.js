@@ -1,12 +1,11 @@
-import CartList from "../components/CartList"
-import CartContext from "../context/CartContext"
+import Cart from "../components/Cart"
 
 const CartContainer = () => {
 
   return (
     <div>
 
-        <CartList></CartList>
+        <Cart></Cart>
 
     </div>
   )

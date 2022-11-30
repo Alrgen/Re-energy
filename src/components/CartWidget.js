@@ -1,17 +1,24 @@
 import { Link } from "react-router-dom";
+import { useCartContext } from '../context/CartContext';
 
 const CartWidget = () => {
+    const { cartState } = useCartContext();
 
-    let inCartItems = 0;
 
     return (
-        <Link to={'/cart'}>
-            <div className='cart-widget button'>
-                <img src="../assets/shopping-cart.png" alt="cart" className='cart'/>
+        <div>
+            {
+                cartState.length > 0 && 
+                <Link to={'/cart'}>
+                    <div className='cart-widget button'>
+                        <img src="../assets/shopping-cart.png" alt="cart" className='cart'/>
 
-                <span className="cart-number">{inCartItems}</span>
-            </div>    
-        </Link>
+                        <span className="cart-number">{cartState.length}</span>
+                    </div>    
+                </Link>
+            }
+            
+        </div>
     )
 }
 

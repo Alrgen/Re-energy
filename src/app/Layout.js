@@ -7,9 +7,9 @@ import CartContext from '../context/CartContext'
 const Layout = () => {
   return (
     <div>
+      <CartContext>
         <NavBar/>
         
-      <CartContext>
         <Outlet/>
       </CartContext>
     </div>
