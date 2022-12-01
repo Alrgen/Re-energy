@@ -1,8 +1,7 @@
 import ItemList from "../components/ItemList";
-import ItemDetailContainer from "./ItemDetailContainer";
 import {useState, useEffect} from 'react';
-import {getProducts} from '../services/products';
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { getItemsByCondition } from "../app/api";
 
 const ItemListContainer = () => {
 
@@ -11,20 +10,13 @@ const ItemListContainer = () => {
     const {categoryId} = useParams();
     
     useEffect(() => {
-      getProducts()
-      .then((res) => {
-        if (categoryId){
-          setProducts(res.filter((item) => item.category === categoryId));
-        }else{
-          setProducts(res);
-        }
-      })
+      getItemsByCondition(categoryId).then(items => setProducts(items));
     }, [categoryId]);
     
     return (
       <div>
-            <ItemList greeting={products}/>
-        </div>
+        <ItemList greeting={products}/>
+      </div>
     )
   }
 

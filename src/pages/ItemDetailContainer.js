@@ -1,12 +1,8 @@
-
-import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom';
 import ItemDetail from '../components/ItemDetail'
-import {getSingleProduct} from '../services/products';
-
-import CartContext from '../context/CartContext';
+import {getItemById} from '../app/api';
 
 
 const ItemDetailContainer = () => {
@@ -15,12 +11,8 @@ const ItemDetailContainer = () => {
   const {itemId} = useParams();
 
   useEffect(() => {
-    getSingleProduct(itemId).then(itemData => {
-      setTimeout(() => {
-        setProduct(itemData);
-      }, 0);
-    })
-  })
+    getItemById(itemId).then(item => setProduct({...item, id:itemId}));
+  }, [])
   
 
   return (

@@ -1,5 +1,4 @@
 import React from 'react'
-import { useEffect } from 'react';
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 import ItemCount from './ItemCount';
@@ -23,7 +22,7 @@ const ItemDetail = (props) => {
     return (
       <div>
         <ItemCount greeting={data.stock} getAmmount={getAmmount}></ItemCount>
-        <button onClick={() => {setAddToCart(true); addItem({id: data.id, name: data.name, price: data.price, cuantity: ammount});}}>Añadir al Carrito</button>
+        <button onClick={() => {setAddToCart(true); addItem({id: data.id, name: data.name, price: data.price, cuantity: ammount}); console.log(data)}}>Añadir al Carrito</button>
       </div>
     )
   }

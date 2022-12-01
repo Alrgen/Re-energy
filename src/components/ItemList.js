@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from 'react'
-import { getProducts } from '../services/products'
 import Item from './Item';
 
 const ItemList = (props) => {

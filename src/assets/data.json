@@ -1,7 +1,0 @@
-[
-    {"id":0, "name":"Panel solar 150W 12V", "price":"100", "stock":5, "image":"../assets/panel-solar.jpg", "category":"solar"},
-    {"id":1, "name":"Panel solar 250W 12V", "price":"150", "stock":3, "image":"../assets/panel-solar.jpg", "category":"solar"},
-    {"id":2, "name":"Panel solar 350W 12V", "price":"220", "stock":7, "image":"../assets/panel-solar.jpg", "category":"solar"},
-    {"id":3, "name":"Bateria Litio 12V 100aH", "price":"300", "stock":4, "image":"../assets/bateria.jpg", "category":"batery"},
-    {"id":4, "name":"Bateria Litio 12V 200aH", "price":"560", "stock":9, "image":"../assets/bateria.jpg", "category":"batery"}
-]
