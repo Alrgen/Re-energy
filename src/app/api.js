@@ -2,15 +2,14 @@ import { collection, getDocs, query, doc, getDoc, addDoc, deleteDoc, updateDoc, 
 import { db } from './firebase';
 
 // CREATE
-export const createItem = async(obj) => {
-    const colRef = collection(db, 'items');
+export const createOrder = async(obj) => {
+    const colRef = collection(db, 'orders');
     const data = await addDoc(colRef, obj);
     return data.id;
 }
-
 // UPDATE
-export const updateItem = async (id, obj) => {
-    const colRef = collection(db, 'items');
+export const updateOrder = async (id, obj) => {
+    const colRef = collection(db, 'orders');
     await updateDoc(doc(colRef, id), obj)
 }
 

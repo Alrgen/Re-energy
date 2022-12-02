@@ -157,3 +157,8 @@ a{
     border-right: 1px solid black;
     margin: 0px 5px 0px 5px;
 }
+
+
+.flexBox{
+    display: flex;
+}
