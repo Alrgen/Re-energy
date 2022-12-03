@@ -1,25 +1,26 @@
 import { Link } from 'react-router-dom';
 
+import { Navbar, Container, Nav } from 'react-bootstrap';
+
 import CartWidget from './CartWidget.js';
 
+import { linkStyle } from '../app/styles.js';
+
 const NavBar = () => {
+
     return (
-        <div className="nav-bar">
-            <div className='logo'>
-                <img src='../assets/logo.png' alt="logo" className="logo-icon"/>
-                <span className='logo-text'>Re-energy</span>
-            </div>
-
-            <ul className="menu">
-                <li className='button'><Link to="/">Inicio</Link></li>
-                <li className='button'><Link to="/products/solar">Paneles solares</Link></li>
-                <li className='button'><Link to="/products/batery">Baterias</Link></li>
-                <li className='button'><Link to="/">Contacto</Link></li>
-                <li className='button'><Link to="/">Info</Link></li>
-            </ul>
-
-            <CartWidget/>
-        </div>
+    <>
+      <Navbar bg="dark" variant="dark" style={{marginBottom: 30}}>
+        <Container>
+          <Navbar.Brand> <Link to="/" style={linkStyle}>Re-energy</Link></Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link><Link to="/products/solar" style={linkStyle}>Paneles Solares</Link></Nav.Link>
+            <Nav.Link><Link to="/products/batery" style={linkStyle}>Baterías</Link></Nav.Link>
+          </Nav>
+          <CartWidget/>
+        </Container>
+      </Navbar>
+    </>
     )
 }
 

@@ -1,5 +1,5 @@
-import './style.css';
 import Router from './app/Router'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () => <Router></Router>

@@ -5,12 +5,9 @@ const ItemList = (props) => {
   const products = props.greeting;
 
   return (
-    <div>
-      {
-        products.map((data, id) => <li key={"item"+id}><Item greeting={data}/></li>)
-      }
-    </div>
+    products.map((data, id) => <Item greeting={data}/>)
   )
 }
 
 export default ItemList
+//    

@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { useCartContext } from '../context/CartContext'
 import { Link } from 'react-router-dom';
 import { createOrder } from '../app/api';
+import { Button, Table } from 'react-bootstrap';
+import { linkStyle } from '../app/styles';
 
 const Cart = () => {
     const { cartState, removeItem, clear } = useCartContext();
@@ -39,13 +41,32 @@ const Cart = () => {
 
     const itemsList = () => {
       return(
-        cartState.map((e, id) => 
-        <li key={"item"+id}>
-            <span> producto: {e.name} | cantidad: {e.cuantity} </span>
-            <span> Precio: {e.price * e.cuantity}</span>
-            <button onClick={() => removeItem(e)}>Remover</button>
-        </li>
-        )
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio Total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+          {
+            cartState.map((e, id) => 
+                <tr>
+                  <td>{e.name}</td>
+                  <td>{e.cuantity}</td>
+                  <td>${e.price * e.cuantity} USD</td>
+                  <td><Button variant='dark' onClick={() => removeItem(e)}>Remover</Button></td>
+                </tr>
+            )
+          }
+          <tr>
+              <td colSpan={3}><h3>Precio final: ${totalPrice} USD</h3></td>
+              <td><Button variant='warning' onClick={() => clear()}>Remover Todo</Button></td>
+          </tr>
+        </tbody>
+        </Table>
       )
     }
 
@@ -53,33 +74,40 @@ const Cart = () => {
       return (
         <div>
           <h1>Ingrese sus datos para finalizar la compra:</h1>
-        <label htmlFor="">
-                <input type="text" placeholder='Nombre' value={orderName} onChange={(event) => {setOrderName(event.target.value)}}/>
-              </label>
-              <label htmlFor="">
-                <input type="mail" placeholder='Correo Electronico' value={orderMailAddress} onChange={(event) => {setOrderMailAddress(event.target.value)}}/>
-              </label>
-              <label htmlFor="">
-                <input type="number" placeholder='Telefono' value={orderPhoneNumber} onChange={(event) => {setOrderPhoneNumber(event.target.value)}}/>
-              </label>
-            <button onClick={() => {saveOrder()}} type="submit">Finalizar Compra</button>
+
+          <form>
+              <div className='form-group' style={{marginBottom: 15}}>
+                <label for="nameInput">Nombre</label>
+                <input type="text" className='form-control' id="nameInput" placeholder='Nombre completo' value={orderName} onChange={(event) => {setOrderName(event.target.value)}}></input>
+              </div>
+              <div className='form-group' style={{marginBottom: 15}}>
+                <label for="emailInput">Correo Electrónico</label>
+                <input type="email" className='form-control' id="emailInput" placeholder='Correo Electrónico' value={orderMailAddress} onChange={(event) => {setOrderMailAddress(event.target.value)}}></input>
+              </div>
+              <div className='form-group' style={{marginBottom: 15}}>
+                <label for="phoneInput">Télefono</label>
+                <input type="text" className='form-control' id="phoneInput" placeholder='Número de télefono' value={orderPhoneNumber} onChange={(event) => {setOrderPhoneNumber(event.target.value)}}></input>
+              </div>
+          </form>
         </div>
       )
     }
+
 
     const endBuyMessage = () => {
       return (
         <div>
           <h1>Gracias por su compra {orderName}.</h1>
           <h2>Recibira un correo a {orderMailAddress} con los detalles de la compra.</h2>
+
+          <Button variant='dark'><Link to="/" style={linkStyle}>Volver al Inicio</Link></Button>
         </div>
       )
     }
 
   return (
     <div>
-        Carrito
-        {itemsList()}
+        {cartState.length > 0 && itemsList()}
         
         {
         isBuyEnd ? 
@@ -90,15 +118,13 @@ const Cart = () => {
         
           cartState.length > 0 ? 
             <div>
-                <h2>Precio total: {totalPrice}</h2>
-                <button onClick={() => clear()}>Remover Todo</button>
-
                 {clientForm()}
-                <button onClick={() => {saveOrder()}} type="submit">Finalizar Compra</button>
+                <Button variant='dark' onClick={() => {saveOrder()}} type="submit">Finalizar Compra</Button>
             </div> 
           :
             <div>
-                <h2>El carrito esta vacio! <Link to={'/'}><button>Volver al inicio</button></Link></h2>
+                <h2>El carrito está vacio!</h2>
+                <Link to={'/'} style={linkStyle}><Button variant='dark'>Volver al inicio</Button></Link>
             </div>
         }
 

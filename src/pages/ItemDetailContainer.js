@@ -4,6 +4,9 @@ import { useParams, Link } from 'react-router-dom';
 import ItemDetail from '../components/ItemDetail'
 import {getItemById} from '../app/api';
 
+import { Button } from 'react-bootstrap';
+import { linkStyle } from '../app/styles';
+
 
 const ItemDetailContainer = () => {
   
@@ -17,11 +20,13 @@ const ItemDetailContainer = () => {
 
   return (
     <div>
-      <button><Link to={`/products/${product.category}`}>Volver</Link></button>
+      <Link to={`/products/${product.category}`} style={linkStyle}><Button variant='dark'>Volver</Button></Link>
+      <div className='d-flex justify-content-center'>
 
-      
-      <ItemDetail greeting={product}/>
+        
+        <ItemDetail greeting={product}/>
 
+      </div>
     </div>
   )
 }

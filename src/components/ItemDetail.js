@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 import ItemCount from './ItemCount';
 
 import { useCartContext } from '../context/CartContext';
+import { Card, Button } from 'react-bootstrap';
+import { linkStyle } from '../app/styles';
 
 const ItemDetail = (props) => {
 
@@ -22,34 +24,38 @@ const ItemDetail = (props) => {
     return (
       <div>
         <ItemCount greeting={data.stock} getAmmount={getAmmount}></ItemCount>
-        <button onClick={() => {setAddToCart(true); addItem({id: data.id, name: data.name, price: data.price, cuantity: ammount}); console.log(data)}}>Añadir al Carrito</button>
+        <Button variant='dark' onClick={() => {
+          if (ammount > 0) {
+            setAddToCart(true);
+            addItem({id: data.id, name: data.name, price: data.price, cuantity: ammount});
+          }
+          }}>
+            Añadir al Carrito
+          </Button>
       </div>
     )
   }
 
   const showConfirmButton = () => {
     return (
-      <div>  
-        <Link to={'/cart'}><button>Ir al carrito</button></Link>
-      </div>
+      <Link to={'/cart'} style={linkStyle}> 
+        <Button variant='dark'> Ir al carrito </Button>
+      </Link>
     )
   }
 
   return (
-    <div>
-      <div className='item'>
-        <div className='item-body'>
-        <img src={data.image} alt="" />
-            <div className='item-description'>
-                <h1 className='item-tittle'>{data.name}</h1>
-                <h1 className='item-tittle'>Precio: {data.price} USD</h1>       
-            </div>
-        </div>
+    <Card className='col-4'>
+      <Card.Img variant='top' src={data.image} height="500"/>
+      <Card.Body>
+        <Card.Title>{data.name}</Card.Title>
+        <Card.Text>{data.info}</Card.Text>
+        <Card.Subtitle style={{ marginBottom: 20}}>${data.price} USD</Card.Subtitle>
+
         {addToCart ? showConfirmButton() : showCounter()}
 
-        
-      </div>
-    </div>
+      </Card.Body>
+    </Card>
   )
 }
 

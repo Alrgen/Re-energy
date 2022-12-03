@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 const ItemCount = (props) => {
 
@@ -17,11 +18,11 @@ const ItemCount = (props) => {
     }
 
   return (
-    <div className='itemCount'>
-        <div className='button' onClick={() => OnRemove()}> - </div>
-        <div className='itemCount-valueDisplay'> <span>{ammount}</span> </div>
-        <div className='button' onClick={() => OnAdd()}> + </div>
-    </div>
+    <ButtonGroup className='text-center align-middle' style={{marginBottom: 20}}>
+      <Button variant='dark' onClick={() => OnRemove()}><h1 style={{fontSize: 30, width: 30}}>-</h1></Button>
+      <span style={{fontSize: 30, width: 300, border: '4px solid black'}}>{ammount}</span>
+      <Button variant='dark' onClick={() => OnAdd()}><h1 style={{fontSize: 30, width: 30}}>+</h1></Button>
+    </ButtonGroup>
   )
 }
 
